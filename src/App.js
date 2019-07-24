@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Fragment} from 'react';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Header from './components/Header';
+import Home from './views/Home';
+import Sidebar from './components/Sidebar';
+import Dashboard from './views/Dashboard';
+import Support from './views/Support';
+import Compaigns from './views/Compaigns'
+import Course from './views/Course';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component{
+  render(){
+    return (
+      <Fragment>
+        <CssBaseline />
+        <Router>
+          <Header/>
+          <Sidebar/>
+          <Switch>
+            <Route exact path="/" component={Dashboard} />
+            <Route exact path="/course-builder" component={Course} />
+            <Route exact path="/campaigns" component={Compaigns} />
+            <Route exact path="/support" component={Support} />
+          </Switch>
+        </Router>
+      </Fragment>
+    )
+  }
 }
 
 export default App;
